@@ -5,10 +5,6 @@ import DataTable from './components/DataTable/DataTable';
 import GraphControlls from './components/GraphControlls/GraphControlls';
 
 const StyledApp = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-
   header {
     font-size: 2rem;
     text-align: center;
@@ -16,6 +12,7 @@ const StyledApp = styled.div`
   }
 
   main {
+    min-height: calc(100vh - 227px);
     padding-bottom: 63px;
 
     >*:not(:last-child) {
@@ -24,9 +21,6 @@ const StyledApp = styled.div`
   }
 
   footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
     text-align: center;
 
     a {
