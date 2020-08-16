@@ -1,7 +1,8 @@
 import React from 'react';
-import InputPanel from './components/InputPanel/InputPanel';
 import styled from 'styled-components';
+import InputPanel from './components/InputPanel/InputPanel';
 import DataTable from './components/DataTable/DataTable';
+import GraphControlls from './components/GraphControlls/GraphControlls';
 
 const StyledApp = styled.div`
   >h1 {
@@ -19,6 +20,7 @@ function App() {
       <h1>React spends list</h1>
       <InputPanel />
       <DataTable />
+      <GraphControlls />
     </StyledApp>
   );
 }
