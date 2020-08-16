@@ -7,7 +7,7 @@ import GraphControlls from './components/GraphControlls/GraphControlls';
 const StyledApp = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   header {
     font-size: 2rem;
@@ -16,7 +16,7 @@ const StyledApp = styled.div`
   }
 
   main {
-    padding-bottom: 23px;
+    padding-bottom: 63px;
 
     >*:not(:last-child) {
       margin-bottom: 2rem;
