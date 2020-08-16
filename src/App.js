@@ -5,22 +5,48 @@ import DataTable from './components/DataTable/DataTable';
 import GraphControlls from './components/GraphControlls/GraphControlls';
 
 const StyledApp = styled.div`
-  >h1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  header {
+    font-size: 2rem;
     text-align: center;
+    margin-bottom:2rem;
   }
 
-  >*:not(:last-child) {
-    margin-bottom: 1rem;
+  main {
+    padding-bottom: 23px;
+
+    >*:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+
+    a {
+      color: #c8c8c8;
+    }
   }
 `;
 
 function App() {
   return (
     <StyledApp>
-      <h1>React spends list</h1>
-      <InputPanel />
-      <DataTable />
-      <GraphControlls />
+      <header>React spends list</header>
+      <main>
+        <InputPanel />
+        <DataTable />
+        <GraphControlls />
+      </main>
+      <footer>
+        <a href='https://fav757.github.io/'>Visit my resume website</a>
+      </footer>
     </StyledApp>
   );
 }
