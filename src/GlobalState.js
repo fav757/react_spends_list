@@ -12,7 +12,7 @@ export const GlobalContext = ({children}) => {
   const [state, dispatch] = useReducer(RootReducer, GlobalState);
 
   return (
-  <GlobalState.Provider value={state, dispatch}>
+  <GlobalState.Provider value={{state, dispatch}}>
     {children}
   </GlobalState.Provider>
   );
