@@ -1,7 +1,11 @@
 import React from 'react';
 
 function App() {
-  return <div className='App'>Hello world</div>;
+  return (
+    <React.Fragment>
+      <h1>React spends list</h1>
+    </React.Fragment>
+  );
 }
 
 export default App;
