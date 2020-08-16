@@ -3,7 +3,8 @@ import RootReducer from './RootReducer';
 
 const initialState = {
   spends: {},
-  incomes: {}
+  incomes: {},
+  inputQuery: ''
 };
 
 export const GlobalState = createContext(initialState);

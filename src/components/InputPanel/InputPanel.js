@@ -1,22 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const StyledInput = styled.input`
-  margin-bottom: 2rem;
-  background: #23232d;
-  border-radius: 24px;
-  font-size: 1rem;
-  text-align: center;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: none;
-  outline: none;
-  color: inherit;
-
-  ::placeholder {
-    color: #c8c8c8;
-  }
-`;
+import Input from './Input';
 
 const StyledButtonsRow = styled.div`
   display: flex;
@@ -40,7 +24,7 @@ const StyledButton = styled.button`
 function InputPanel() {
   return (
     <div>
-      <StyledInput placeholder='products 10$' />
+      <Input />
       <StyledButtonsRow>
         <StyledButton>Spends</StyledButton>
         <StyledButton>Incomes</StyledButton>
