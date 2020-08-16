@@ -3,7 +3,7 @@
 }
 
 :root {
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #E5E5E5;
 }
@@ -19,12 +19,12 @@ h1 {
 
 body {
   background: linear-gradient(76.67deg, #D61F6C 51.12%, #BE1A5F 51.22%);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 #root {
   max-width: 576px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
   background: #32323C;;
 }
