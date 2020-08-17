@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { GlobalState } from '../../GlobalState';
 
@@ -23,13 +23,37 @@ const StyledTable = styled.table`
   td:first-child {
     border-right: 1px solid #c8c8c8;
   }
+
+  ol {
+    padding: 0;
+    margin: 0 1rem;
+  }
 `;
 
+function CellList(props) {
+  return (
+    <ol>
+      {props.data.map((value) => (
+        <li key={value.comment}>{`${value.comment} - ${value.amount}$`}</li>
+      ))}
+    </ol>
+  );
+}
+
 function TableRow(props) {
+  const [expand, setExpand] = useState(true);
+  const handleClick = () => setExpand(!expand);
+
   return (
     <tr>
       <td>{props.title}</td>
-      <td>{props.data.reduce((a, b) => a + b.amount, 0)}</td>
+      <td onClick={handleClick}>
+        {expand ? (
+          props.data.reduce((a, b) => a + b.amount, 0)
+        ) : (
+          <CellList data={props.data} />
+        )}
+      </td>
     </tr>
   );
 }
