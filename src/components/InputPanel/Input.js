@@ -51,7 +51,7 @@ const spendData = {
 };
 
 function Input() {
-  const { dispatch } = useContext(GlobalState);
+  const { state, dispatch } = useContext(GlobalState);
   const [inputQuery, setInputQuery] = useState('');
   const [phase, setPhase] = useState('category');
 
@@ -75,7 +75,11 @@ function Input() {
     } else if (phase === 'amount') {
       newPhase = 'comment';
     } else if (phase === 'comment') {
-      dispatch(addToIncomes(spendData));
+      dispatch(
+        state.activeType === 'spends'
+          ? addToSpends(spendData)
+          : addToIncomes(spendData)
+      );
       newPhase = 'category';
     }
 
