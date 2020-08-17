@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { GlobalState } from '../../GlobalState';
-import { addToSpends } from '../../RootActions';
+import { addToSpends, addToIncomes } from '../../RootActions';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ function Input() {
     } else if (phase === 'amount') {
       newPhase = 'comment';
     } else if (phase === 'comment') {
-      dispatch(addToSpends(spendData));
+      dispatch(addToIncomes(spendData));
       newPhase = 'category';
     }
 
