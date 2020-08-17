@@ -58,15 +58,25 @@ function Input() {
   const handleChange = (event) => setInputQuery(event.target.value);
 
   const handleClick = () => {
-    spendData[phase] = (function () {
-      if (phase === 'category') {
-        return inputQuery.toLocaleLowerCase();
-      } else if (phase === 'amount') {
-        return parseFloat(inputQuery);
+    if (phase === 'category') {
+      if (!inputQuery) {
+        alert('Dont let category field be empty');
+        return;
       } else {
-        return inputQuery;
+        spendData[phase] = inputQuery.toLocaleLowerCase();
       }
-    })();
+    } else if (phase === 'amount') {
+      const result = parseFloat(inputQuery);
+      if (isNaN(result)) {
+        alert('Amount is not correct. Please try again');
+        setInputQuery('');
+        return;
+      } else {
+        spendData[phase] = parseFloat(inputQuery);
+      }
+    } else {
+      spendData[phase] = inputQuery;
+    }
     setInputQuery('');
 
     let newPhase;
@@ -86,6 +96,10 @@ function Input() {
     setPhase(newPhase);
   };
 
+  const handlePress = (event) => {
+    if (event.key === 'Enter') handleClick();
+  };
+
   return (
     <StyledContainer>
       <StyledIconsContainer>
@@ -93,6 +107,7 @@ function Input() {
         <i onClick={() => setInputQuery('')} className='fas fa-times'></i>
       </StyledIconsContainer>
       <StyledInput
+        onKeyDown={handlePress}
         value={inputQuery || ''}
         onChange={handleChange}
         placeholder={`Enter ${phase}`}
