@@ -24,6 +24,10 @@ const StyledButton = styled.button`
   :first-child {
     margin-right: 1rem;
   }
+
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 function SpendsButton() {
