@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import RootReducer from './RootReducer';
 
 const initialState = {
+  activeType: 'spends',
   spends: {
     products: { amount: 25, comment: 'milks' },
   },

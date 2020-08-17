@@ -1,7 +1,10 @@
-import { ADD_TO_SPENDS, ADD_TO_INCOMES } from './RootActions';
+import { ADD_TO_SPENDS, ADD_TO_INCOMES, CHANGE_TYPE } from './RootActions';
 
 function AppReducer(state, action) {
   switch (action.type) {
+    case CHANGE_TYPE: {
+      return {...state, activeType: action.payload};
+    }
     case ADD_TO_SPENDS: {
       const newState = Object.assign({}, state);
       if (newState.spends[action.payload.category] === undefined) {

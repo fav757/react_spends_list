@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalState } from '../../GlobalState';
+import { changeType } from '../../RootActions';
 
 const StyledButtonsRow = styled.div`
   display: flex;
@@ -16,27 +17,44 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
 
+  &[data-isactive='true'] {
+    text-shadow: 0 0 5px #f3b9d1;
+  }
+
   :first-child {
     margin-right: 1rem;
   }
 `;
 
 function SpendsButton() {
-  const {state, dispatch} = useContext(GlobalState);
+  const { state, dispatch } = useContext(GlobalState);
+  const handleClick = () => dispatch(changeType('spends'));
+  const isActive = state.activeType === 'spends';
 
-  const handleClick = () => {
-    const query = state.inputQuery.split('/');
-    console.log(query);
-  };
+  return (
+    <StyledButton data-isactive={isActive} onClick={handleClick}>
+      Spends
+    </StyledButton>
+  );
+}
 
-  return <StyledButton onClick={handleClick}>Spends</StyledButton>;
+function IncomesButton() {
+  const { state, dispatch } = useContext(GlobalState);
+  const handleClick = () => dispatch(changeType('incomes'));
+  const isActive = state.activeType === 'incomes';
+
+  return (
+    <StyledButton data-isactive={isActive} onClick={handleClick}>
+      Incomes
+    </StyledButton>
+  );
 }
 
 function Buttons() {
   return (
     <StyledButtonsRow>
       <SpendsButton />
-      <StyledButton>Incomes</StyledButton>
+      <IncomesButton />
     </StyledButtonsRow>
   );
 }
