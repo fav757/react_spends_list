@@ -4,9 +4,26 @@ import RootReducer from './RootReducer';
 const initialState = {
   activeType: 'spends',
   spends: {
-    products: { amount: 25, comment: 'milks' },
+    products: [
+      { amount: 25, comment: 'milk' },
+      { amount: 15, comment: 'bread' },
+      { amount: 33, comment: 'chips' },
+    ],
+    home: [
+      { amount: 22, comment: 'tools' },
+      { amount: 11, comment: 'water' },
+      { amount: 21, comment: 'gaz' },
+    ],
   },
-  incomes: {},
+  incomes: {
+    job: [
+      { amount: 30000, comment: 'salary' },
+      { amount: 15000, comment: 'bonus' },
+    ],
+    freelance: [
+      { amount: 10000, comment: 'website creation' },
+    ]
+  },
 };
 
 export const GlobalState = createContext(initialState);

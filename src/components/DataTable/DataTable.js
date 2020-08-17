@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalState } from '../../GlobalState';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -24,7 +25,24 @@ const StyledTable = styled.table`
   }
 `;
 
+function TableRow(props) {
+  return (
+    <tr>
+      <td>{props.title}</td>
+      <td>{props.data.reduce((a, b) => a + b.amount, 0)}</td>
+    </tr>
+  );
+}
+
 function DataTable() {
+  const { state } = useContext(GlobalState);
+  const database = state[state.activeType];
+
+  const rows = [];
+  for (let key in database) {
+    rows.push(<TableRow key={key} title={key} data={database[key]} />);
+  }
+
   return (
     <StyledTable>
       <thead>
@@ -33,16 +51,7 @@ function DataTable() {
           <td>Value:</td>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Products</td>
-          <td>10$</td>
-        </tr>
-        <tr>
-          <td>Products</td>
-          <td>10$</td>
-        </tr>
-      </tbody>
+      <tbody>{rows}</tbody>
     </StyledTable>
   );
 }
