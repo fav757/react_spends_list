@@ -16,11 +16,11 @@ const StyledTable = styled.table`
   }
 
   td {
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.6rem;
     width: 50%;
   }
 
-  td:first-child {
+  td:not(:last-child) {
     border-right: 1px solid #c8c8c8;
   }
 
@@ -43,16 +43,24 @@ function CellList(props) {
 function TableRow(props) {
   const [expand, setExpand] = useState(true);
   const handleClick = () => setExpand(!expand);
+  const arrowTransform = expand ? '0' : '180';
 
   return (
     <tr>
       <td>{props.title}</td>
-      <td onClick={handleClick}>
+      <td>
         {expand ? (
           props.data.reduce((a, b) => a + b.amount, 0)
         ) : (
           <CellList data={props.data} />
         )}
+      </td>
+      <td>
+        <i
+          style={{ transform: `rotate(${arrowTransform}deg)` }}
+          onClick={handleClick}
+          className='fas fa-angle-down'
+        ></i>
       </td>
     </tr>
   );
@@ -73,6 +81,7 @@ function DataTable() {
         <tr>
           <td>Category:</td>
           <td>Value:</td>
+          <td>O/h</td>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
