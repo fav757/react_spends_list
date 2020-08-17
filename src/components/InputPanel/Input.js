@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { GlobalState } from '../../GlobalState';
-import { changeInputQuery } from '../../RootActions';
+import { addToSpends } from '../../RootActions';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ const StyledInput = styled.input`
   background: #23232d;
   border-radius: 24px;
   font-size: 1rem;
-  text-align: center;
   width: 100%;
   padding: 0.5rem 1rem;
   border: none;
@@ -31,33 +30,68 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledIcon = styled.div`
+const StyledIconsContainer = styled.div`
   position: absolute;
   right: 0;
-  margin-right: 1rem;
+  margin-right: 0.4rem;
 
-  :hover {
-    transform: scale(1.2);
+  i {
+    margin: 0 0.4rem;
+
+    :hover {
+      transform: scale(1.2);
+    }
   }
 `;
 
+const spendData = {
+  category: '',
+  amount: 0,
+  comment: null,
+};
+
 function Input() {
-  const { state, dispatch } = useContext(GlobalState);
+  const { dispatch } = useContext(GlobalState);
+  const [inputQuery, setInputQuery] = useState('');
+  const [phase, setPhase] = useState('category');
 
-  const handleChange = (event) =>
-    dispatch(changeInputQuery(event.target.value));
+  const handleChange = (event) => setInputQuery(event.target.value);
 
-  const handleClick = () => dispatch(changeInputQuery(''));
+  const handleClick = () => {
+    spendData[phase] = (function () {
+      if (phase === 'category') {
+        return inputQuery.toLocaleLowerCase();
+      } else if (phase === 'amount') {
+        return parseFloat(inputQuery);
+      } else {
+        return inputQuery;
+      }
+    })();
+    setInputQuery('');
+
+    let newPhase;
+    if (phase === 'category') {
+      newPhase = 'amount';
+    } else if (phase === 'amount') {
+      newPhase = 'comment';
+    } else if (phase === 'comment') {
+      dispatch(addToSpends(spendData));
+      newPhase = 'category';
+    }
+
+    setPhase(newPhase);
+  };
 
   return (
     <StyledContainer>
-      <StyledIcon onClick={handleClick}>
-        <i className='fas fa-times'></i>
-      </StyledIcon>
+      <StyledIconsContainer>
+        <i onClick={handleClick} className='fas fa-check'></i>
+        <i onClick={() => setInputQuery('')} className='fas fa-times'></i>
+      </StyledIconsContainer>
       <StyledInput
-        value={state.inputQuery || ''}
+        value={inputQuery || ''}
         onChange={handleChange}
-        placeholder='products 10$'
+        placeholder={`Enter ${phase}`}
       />
     </StyledContainer>
   );

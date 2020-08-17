@@ -3,9 +3,3 @@ export const addToSpends = (value) => ({
   type: ADD_TO_SPENDS,
   payload: value,
 });
-
-export const CHANGE_INPUT_QUERY = 'CHANGE_INPUT_QUERY';
-export const changeInputQuery = (value) => ({
-  type: CHANGE_INPUT_QUERY,
-  payload: value,
-});

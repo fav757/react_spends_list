@@ -1,16 +1,16 @@
-import { ADD_TO_SPENDS, CHANGE_INPUT_QUERY } from './RootActions';
+import { ADD_TO_SPENDS } from './RootActions';
 
 function AppReducer(state, action) {
   switch (action.type) {
-    case CHANGE_INPUT_QUERY: {
-      return {...state, inputQuery: action.payload};
-    }
     case ADD_TO_SPENDS: {
       const newState = Object.assign({}, state);
-      if (newState[action.payload.category] === undefined) {
-        newState[action.payload.category] = [];
+      if (newState.spends[action.payload.category] === undefined) {
+        newState.spends[action.payload.category] = [];
       }
-      newState[action.payload.category].push(action.payload.value);
+      newState.spends[action.payload.category].push({
+        amount: action.payload.amount,
+        comment: action.payload.comment,
+      });
       return newState;
     }
     default:

@@ -13,7 +13,6 @@ const StyledApp = styled.div`
 
   main {
     min-height: calc(100vh - 227px);
-    padding-bottom: 63px;
 
     >*:not(:last-child) {
       margin-bottom: 2rem;
