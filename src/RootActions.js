@@ -4,6 +4,12 @@ export const changeType = (value) => ({
   payload: value,
 });
 
+export const CHANGE_DATA_SECTOR = 'CHANGE_DATA_SECTOR';
+export const changeDataSector = (value) => ({
+  type: CHANGE_DATA_SECTOR,
+  payload: value,
+});
+
 export const ADD_TO_SPENDS = 'ADD_TO_SPENDS';
 export const addToSpends = (value) => ({
   type: ADD_TO_SPENDS,

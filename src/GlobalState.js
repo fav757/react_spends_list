@@ -3,6 +3,7 @@ import RootReducer from './RootReducer';
 
 const initialState = {
   activeType: 'spends',
+  dataSector: 'data table',
   spends: {
     products: [
       { amount: 25, comment: 'milk' },
