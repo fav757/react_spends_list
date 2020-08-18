@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { GlobalState } from '../../GlobalState';
 
 function PieGraph() {
@@ -61,18 +61,20 @@ function PieGraph() {
       <PieChart>
         <Pie
           data={data}
+          isAnimationActive={true}
           dataKey='value'
           cx='50%'
           cy='50%'
           labelLine={renderCustomizedLabel}
           label={'test'}
-          outerRadius='100%'
+          outerRadius='75%'
           fill='#8884d8'
         >
           {data.map((entry, index) => (
             <Cell key={entry} fill={colors[index % colors.length]} />
           ))}
         </Pie>
+        <Tooltip />
       </PieChart>
     </ResponsiveContainer>
   );
