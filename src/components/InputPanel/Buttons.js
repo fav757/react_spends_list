@@ -16,6 +16,7 @@ const StyledButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   outline: none;
+  cursor: pointer;
 
   &[data-isactive='true'] {
     text-shadow: 0 0 5px #f3b9d1;

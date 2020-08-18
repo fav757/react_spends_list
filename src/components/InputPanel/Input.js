@@ -37,6 +37,7 @@ const StyledIconsContainer = styled.div`
 
   i {
     margin: 0 0.4rem;
+    cursor: pointer;
 
     :hover {
       transform: scale(1.2);
