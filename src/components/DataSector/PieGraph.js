@@ -66,7 +66,7 @@ function PieGraph() {
           cx='50%'
           cy='50%'
           labelLine={renderCustomizedLabel}
-          label={'test'}
+          label={{}}
           outerRadius='75%'
           fill='#8884d8'
         >

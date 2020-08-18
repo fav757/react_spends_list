@@ -19,3 +19,14 @@ body {
   padding: 2rem;
   background: #32323C;;
 }
+
+@media screen and (max-width: 576px) {
+  body {
+    padding: 0;
+  }
+
+  #root {
+    min-height: 100vh;
+    padding: 0.5rem;
+  }
+}

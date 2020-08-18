@@ -8,14 +8,14 @@ const StyledApp = styled.div`
   header {
     font-size: 2rem;
     text-align: center;
-    margin-bottom:2rem;
+    margin-bottom: 2rem;
   }
 
   main {
     min-height: calc(100vh - 227px);
     padding-bottom: 2rem;
 
-    >*:not(:last-child) {
+    > *:not(:last-child) {
       margin-bottom: 2rem;
     }
   }
@@ -25,6 +25,12 @@ const StyledApp = styled.div`
 
     a {
       color: #c8c8c8;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    main {
+      min-height: calc(100vh - 128px);
     }
   }
 `;
