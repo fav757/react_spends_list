@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import DataTable from './DataTable';
+import LineGraph from './LineGraph';
 
 function DataSector() {
-  return <DataTable />;
+  return <LineGraph />;
 }
 
 export default DataSector;
