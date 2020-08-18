@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalState } from '../../GlobalState';
+import { changeDataSector } from '../../RootActions';
 
 const StyledBar = styled.div`
   width: 100%;
@@ -66,6 +68,11 @@ const StyledButton = styled.button`
 `;
 
 function GraphControlls() {
+  const { dispatch } = useContext(GlobalState);
+  const handleClick = (value) => {
+    dispatch(changeDataSector(value));
+  };
+
   return (
     <StyledBar>
       <div className='hiding-sector'>
@@ -73,9 +80,15 @@ function GraphControlls() {
         <div className='fone'></div>
       </div>
       <div className='visible-sector'>
-        <StyledButton>graph 1</StyledButton>
-        <StyledButton>graph 2</StyledButton>
-        <StyledButton>graph 3</StyledButton>
+        <StyledButton onClick={() => handleClick('data table')}>
+          Table
+        </StyledButton>
+        <StyledButton onClick={() => handleClick('line graph')}>
+          Line
+        </StyledButton>
+        <StyledButton onClick={() => handleClick('pie graph')}>
+          Pie
+        </StyledButton>
       </div>
     </StyledBar>
   );
