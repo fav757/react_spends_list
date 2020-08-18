@@ -1,21 +1,27 @@
 import React, { useContext } from 'react';
-import { LineChart, Line } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { GlobalState } from '../../GlobalState';
 
 function LineGraph() {
   const { state } = useContext(GlobalState);
 
   const spends = [];
-  for (let key in state.spends) {
-    state.spends[key].forEach((value) => {
+  for (let key in state[state.activeType]) {
+    state[state.activeType][key].forEach((value) => {
       spends.push({ name: value.comment, amount: value.amount });
     });
   }
 
   return (
-    <LineChart width={400} height={400} data={spends}>
-      <Line type='monotone' dataKey='amount' stroke='#8884d8' />
+    <ResponsiveContainer width="100%" height={400}>
+    <LineChart data={spends}>
+      <CartesianGrid stroke='#ccc' strokeDasharray="5 5" />
+      <Line type='monotone' dataKey='amount' stroke='#BE1A5F' />
+      <XAxis dataKey='name' />
+      <YAxis />
+      <Tooltip contentStyle={{color: 'black'}} />
     </LineChart>
+    </ResponsiveContainer>
   );
 }
 

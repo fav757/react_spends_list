@@ -14,6 +14,9 @@ const initialState = {
       { amount: 11, comment: 'water' },
       { amount: 21, comment: 'gaz' },
     ],
+    tech: [
+      { amount: 20000, comment: 'notebook' },
+    ],
   },
   incomes: {
     job: [
