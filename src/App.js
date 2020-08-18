@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputPanel from './components/InputPanel/InputPanel';
-import DataTable from './components/DataTable/DataTable';
+import DataSector from './components/DataSector/DataSector';
 import GraphControlls from './components/GraphControlls/GraphControlls';
 
 const StyledApp = styled.div`
@@ -13,6 +13,7 @@ const StyledApp = styled.div`
 
   main {
     min-height: calc(100vh - 227px);
+    padding-bottom: 2rem;
 
     >*:not(:last-child) {
       margin-bottom: 2rem;
@@ -34,7 +35,7 @@ function App() {
       <header>React spends list</header>
       <main>
         <InputPanel />
-        <DataTable />
+        <DataSector />
         <GraphControlls />
       </main>
       <footer>
