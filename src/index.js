@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
-import './index.css';
-import App from './App';
+import './root.css';
+import App from './components/App/App';
 import { GlobalContext } from './GlobalState';
 
 ReactDOM.render(

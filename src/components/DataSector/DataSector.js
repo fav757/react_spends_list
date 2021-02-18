@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import DataTable from './DataTable';
-import LineGraph from './LineGraph';
-import PieGraph from './PieGraph';
+import DataTable from '../DataTable/DataTable';
+import LineGraph from '../Graphs/LineGraph';
+import PieGraph from '../Graphs/PieGraph';
 import { GlobalState } from '../../GlobalState';
 
 function DataSector() {
